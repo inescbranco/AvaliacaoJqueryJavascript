@@ -1,0 +1,40 @@
+<!-- 
+
+Pós-Graduação em Web Design
+Unidade Curricular: JS e JQuery
+Professor: Sérgio Fontes
+Aluna: Inês Branco 50041230
+
+Enunciado:
+
+1) Uma página HTML onde:
+    a) Exista um bloco de script com funções a disponibilizar para toda a página;
+    b) Exista um bloco de script que utilize uma função presente no ponto 1. a);
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+    <script>
+        function helloworld() {
+            alert('Hello world!');
+        }
+
+        function anythingelse() {
+            alert('Anything else');
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="helloworld()">Say hello to the World</button>
+    <button onclick="anythingelse()">Say anything else</button>
+</body>
+
+</html>

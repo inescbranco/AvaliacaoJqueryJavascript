@@ -1,0 +1,67 @@
+<!-- 
+
+Pós-Graduação em Web Design
+Unidade Curricular: JS e JQuery
+Professor: Sérgio Fontes
+Aluna: Inês Branco 50041230
+
+Enunciado:
+
+4) Apresente o exemplo de uma página que contenha uma referência local para a framework de jQuery.
+a) Indique as vantagens e desvantagens de utilizar referências locais.
+b) Que outro tipo de referências conhece?
+
+Respostas
+a) Indique as vantagens e desvantagens de utilizar referências locais.
+
+    Vantagem: 
+        * Funciona offline;
+        * Versões controladas;
+        * Loading mais rapido.
+
+    Desvantagem: 
+        * Ocupa espaço no projeto;
+        * Versões desatualizadas.
+
+b) Que outro tipo de referências conhece?
+
+Referências online: CDN (Content Delivery Network).
+No exercicio 5 utilizei os dois tipos de referencias: local (jquery), online (icons: fontawesome)
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+
+        $(function () {
+            print();
+        });
+
+        function print() {
+            var div = $("#divToPrint");
+            var helloWorld = $("<p>Hello World</p>");
+
+            div.append(helloWorld);
+        }
+
+    </script>
+    <style>
+        #divToPrint {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divToPrint"></div>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!-- 
+
+Pós-Graduação em Web Design
+Unidade Curricular: JS e JQuery
+Professor: Sérgio Fontes
+Aluna: Inês Branco 50041230
+
+Enunciado:
+
+3) Uma página que contenha um bloco de javascript que contenha um array com frases de testemunhos e que utilize uma estrutura de
+controlo para “escrever” esses elementos numa bullet list. Garanta que essa bullet list esteá dentro de uma div.
+a) Justifique a escolha da estrutura de controlo;
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+    <script>
+        var items;
+
+        function addToList() {
+            var itemsShoppingList = document.getElementById('itemsShoppingList');
+
+            // a) Justificação da estrutura de controlo:
+            // Utilização de "if" para uma pequena validação: 
+            // O array é instanciado apenas quando está "undefined". Desta forma de não o array não é instanciado sempre que se clica em "Adicionar à Lista". 
+            if (items == undefined) {
+                items = [];
+            }
+            var itemText = document.getElementById('itemList').value;
+
+            // a) Justificação da estrutura de controlo:
+            // Utilização de "if" para uma pequena validação: 
+            // Caso o input esteja vazio e o utilizador clique em "Adicionar à Lista" é apresentado um alerta e a função "addToList" é interrompida.
+            if (itemText.length == 0) {
+                alert('Ups. Falta escreveres o artigo a adicionar na lista.');
+                return;
+            }
+
+            items.push(itemText);
+
+            // a) Justificação da estrutura de controlo:
+            // Utilização de "if" para uma pequena validação: 
+            // Apesar de não ser boa prática, sempre que é clicado no "Adicionar à lista" os elementos 'li' são apagados antes de ser criados.
+            // A validação "if" permite validar se existe elementos 'li' para apagar antes de apagar.
+            // Manteve-se esta solução apenas porque se trata de uma pequena lista de items.
+            if (itemsShoppingList.childElementCount > 0) {
+                itemsShoppingList.innerHTML = '';
+            }
+
+            // a) Justificação da estrutura de controlo:
+            // Utilização de "forEach": 
+            // Foi criado um loop que renderiza, sob forma de lista (<li>), cada item do array.
+            items.forEach(function (element) {
+                var listItem = document.createElement('li');
+                listItem.innerHTML = element;
+                itemsShoppingList.append(listItem);
+            });
+        }
+
+        function clearList() {
+            items = [];
+            itemsShoppingList.innerHTML = '';
+            var listItem = document.createElement('span');
+            listItem.innerHTML = 'Lista vazia';
+            itemsShoppingList.append(listItem);
+        }
+
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            padding: 3%;
+        }
+
+        .container {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <label>Artigos para adicionar à lista</label><br><br>
+        <input type="text" id="itemList">&nbsp;
+        <button onclick="addToList()">Adicionar à lista</button><br><br>
+        <button onclick="clearList()">Limpar lista</button><br><br>
+
+        <hr>
+        <label>Lista de compras</label><br>
+
+        <div>
+            <ul id="itemsShoppingList">
+                <span>Lista vazia</span>
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+</html>

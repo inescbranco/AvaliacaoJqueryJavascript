@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .studant-card {
+            border: 1px solid gray;
+            width: 30rem;
+            height: 15rem;
+            border-radius: 5px;
+            padding: 1rem;
+            background-image: url("images/atlas.jpg");
+            object-fit: contain;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            /* IE 9 */
+            -webkit-transform: translate(-50%, -50%);
+            /* Chrome, Safari, Opera */
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .images-container>img#profile {
+            width: 7rem;
+            border-radius: 5px;
+            border: 1px solid white;
+        }
+
+        .images-container>img#ue {
+            width: 60%;
+            height: 20%;
+        }
+
+        .text-container>#name {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .buttons-container>div {
+            background-color: white;
+            border: 1px solid orange;
+            color: black;
+            padding: 0.5rem;
+        }
+
+        .buttons-container>div:hover {
+            background-color: orange;
+            border: 1px solid black;
+        }
+
+        .buttons-container>div>a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="studant-card">
+
+        <div class="images-container">
+            <img id="ue" src="images/UE.png">
+            <img id="profile" src="images/ines_branco.png">
+        </div>
+        <div class="text-container">
+            <p id="name"><a href="https://inesbranco.netlify.app/" target="_blank">Inês Branco</a></p>
+            <p>Estudante 50041230</p>
+            <p>Pós-graduação em Web Design</p>
+
+        </div>
+        <br>
+
+        <h3>Módulo de Programação Web II – Js e jQuery</h3>
+        <h3>Avaliação</h3>
+        <br>
+        <p id="description">Abaixo segue a resolução dos exercicios apresentados no <a
+                href="documents/UC09_EnunciadoTrabalho.pdf" target="_blank">enunciado</a></p>
+        <div class="buttons-container">
+            <div><a href="exercicio_1.html" target="_blank">Exercicio 1</a></div>
+            <div><a href="exercicio_2.html" target="_blank">Exercicio 2</a></div>
+            <div><a href="exercicio_3.html" target="_blank">Exercicio 3</a></div>
+            <div><a href="exercicio_4.html" target="_blank">Exercicio 4</a></div>
+            <div><a href="exercicio_5.html" target="_blank">Exercicio 5</a></div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

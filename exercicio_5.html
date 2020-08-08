@@ -1,0 +1,210 @@
+<!-- 
+
+Pós-Graduação em Web Design
+Unidade Curricular: JS e JQuery
+Professor: Sérgio Fontes
+Aluna: Inês Branco 50041230
+
+Enunciado:
+
+5) Com base nos exemplos abordados nas aulas, crie uma calculadora em jQuery. Esta calculadora dever ter como base um formulário em
+html com botões e caixas de texto ao seu critério de forma a permitir aproveitar o resultado num novo cálculo:
+a) As caixas de texto servirão para colocar os valores.
+b) Os botões para cada uma das operações matemáticas base: Soma, Subtração, Divisão e Multiplicação.
+c) O resultado deverá ser apresentado no innerHTML de uma div.
+d) O erro no caso de uma impossibilidade deve ser apresentado num alert e na consola de programador do browser.
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+    <!-- Referência online -->
+    <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" data-auto-replace-svg="nest"></script>
+    <!-- Referência local -->
+    <script src="jquery-3.5.1.min.js"></script>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            padding: 3%;
+        }
+
+        #calculatorContainer {
+            width: 25rem;
+            height: 35rem;
+            border: solid 1px grey;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px grey;
+            padding: 1rem;
+        }
+
+        #inputContainer {
+            margin: 1rem 1rem;
+            display: flex;
+        }
+
+        #inputContainer>input {
+            border-radius: 5px;
+            height: 3rem;
+            font-size: 200%;
+            width: 80%;
+        }
+
+        .clear-button {
+            margin-left: 0.5rem;
+        }
+
+        #buttonsContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #buttonsContainer>.operation-button, .clear-button {
+            width: 3rem;
+            height: 3rem;
+            border: solid 1px grey;
+            border-radius: 10px;
+            box-shadow: 3px 3px grey;
+            font-size: 200%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: orange;
+        }
+
+        .clear-button {
+            color: grey;
+        }
+
+        #buttonsContainer>.operation-button:hover {
+            color: white;
+            background-color: orange;
+        }
+
+        .clear-button:hover {
+            color: white;
+            background-color: lightgray;
+        }
+
+        #buttonsContainer>.operation-button:active {
+            color: white;
+            background-color: orange;
+            box-shadow: none;
+        }
+
+        .clear-button:active {
+            color: white;
+            background-color: lightgray;
+            box-shadow: none;
+        }
+
+        hr {
+            margin: 2rem;
+        }
+
+        #finalResult {
+            height: 15rem;
+            font-size: 500%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+
+    <script>
+        var result = 0;     
+
+        function getInput() {
+            return +($("#inputValue").val());
+        }
+
+        function clearValues() {
+            result = 0;
+            $("#inputValue").val(0);
+            display(result);
+        }
+
+        // b) Os botões para cada uma das operações matemáticas base: Soma, Subtração, Divisão e Multiplicação.
+        function addValues() {
+            result+=getInput();
+            validate(result);
+            display(result);
+        }
+
+        // b) Os botões para cada uma das operações matemáticas base: Soma, Subtração, Divisão e Multiplicação.
+        function removeValues() {
+            result-=getInput();
+            validate(result);
+            display(result);
+        }
+
+        // b) Os botões para cada uma das operações matemáticas base: Soma, Subtração, Divisão e Multiplicação.
+        function timesValues() {
+            result*=getInput(); 
+            validate(result);
+            display(result);
+        }
+
+        // b) Os botões para cada uma das operações matemáticas base: Soma, Subtração, Divisão e Multiplicação.
+        function divideValues() {
+            result/=getInput();
+            validate(result);
+            display(result);
+        }
+
+        // c) O resultado deverá ser apresentado no innerHTML de uma div.
+        function display(value) {
+            var showFinalResult = $("#finalResult");
+            showFinalResult.text(value);
+        }
+
+        // d) O erro no caso de uma impossibilidade deve ser apresentado num alert e na consola de programador do browser.
+        function validate (value) {
+            if (value > 1000000 || value < -1000000) {
+                console.log('O valor final é: '+ value + '. O valor final deve estar entre -1.000.000 e 1.000.000.');
+                alert('O valor final é: '+ value + '. O valor final deve estar entre -1.000.000 e 1.000.000.');
+                clearValues();
+                return;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="calculatorContainer">
+
+        <div id="inputContainer">
+            <!-- a) As caixas de texto servirão para colocar os valores. -->
+            <input type="number" id="inputValue" placeholder="0">
+            <div class="clear-button" onclick="clearValues()">C</div>
+        </div>
+        <hr>
+
+        <!-- b) Os botões para cada uma das operações matemáticas base: Soma, Subtração, Divisão e Multiplicação. -->
+        <div id="buttonsContainer">
+            <div class="operation-button" onclick="addValues()"><i class="fas fa-plus"></i></div>
+            <div class="operation-button" onclick="removeValues()"><i class="fas fa-minus"></i></div>
+            <div class="operation-button" onclick="timesValues()"><i class="fas fa-times"></i></div>
+            <div class="operation-button" onclick="divideValues()"><i class="fas fa-divide"></i></div>
+        </div>
+        <hr>
+
+        <div id="finalResult">0</div>
+
+    </div>
+
+</body>
+
+</html>
